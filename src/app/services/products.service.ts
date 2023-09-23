@@ -19,8 +19,8 @@ export class ProductsService {
 
   // Fetch data from rest apis
   public getProducts() {
-    this.httpClient.get(`${environment.apiUrl}/products`).subscribe( (response)=>{
-      this.productsSub.next(Object.assign([],response));
+    this.httpClient.get(`${environment.apiBaseUrl}/products`).subscribe( (response:any)=>{
+      this.productsSub.next(Object.assign([],response?.content));
       this.productsRetreived = true;
     })
   }
@@ -28,8 +28,8 @@ export class ProductsService {
   // add products to cart
   addProductToShoppingCart(prd:any, prdRemoveBool?: boolean, prdIdx=-1) {
     // add product into cart for multiple time.
-    if(this.cartProducts.some(x=>x["id"]===prd["id"])) { 
-      let idx = this.cartProducts.findIndex(x=> x["id"]===prd["id"]);
+    if(this.cartProducts.some(x=>x["productId"]===prd["productId"])) { 
+      let idx = this.cartProducts.findIndex(x=> x["productId"]===prd["productIdid"]);
       this.cartProducts[idx]["quantity"] +=1;
       console.log(prd['title'], "Alreay Added to Cart, Quantity Updated");
     } else{
@@ -45,7 +45,7 @@ export class ProductsService {
 
   // add products to whish 
   addProductToWhishlist(prd:any, prdRemoveBool?:boolean, prdIdx:number=-1) {
-    if(!this.whishlistProducts.some(x=>x["id"]===prd["id"])) {
+    if(!this.whishlistProducts.some(x=>x["productId"]===prd["productId"])) {
       this.whishlistProducts.push({
         ...prd, "quantity":1
       });

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -8,12 +10,14 @@ import { ProductsService } from 'src/app/services/products.service';
 })
 export class NavbarComponent implements OnInit {
 
+  constructor(public authService: AuthService, private router:Router, public productService:ProductsService) { }
 
-  constructor(public  productService: ProductsService) { }
+  ngOnInit(): void {
+  }
 
-  ngOnInit(): void {  
-    console.log(this.productService.cartProducts);
-    
+  logOut() {
+    this.authService.logOut();
+    this.router.navigateByUrl("/auth/login");
   }
 
 }

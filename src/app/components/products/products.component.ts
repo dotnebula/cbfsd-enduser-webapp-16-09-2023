@@ -23,7 +23,7 @@ export class ProductsComponent implements OnInit {
       if(data.length !=0){
         this.products = Object.assign([],data);
         this.fetching = false;
-        console.log(this.products);
+        // console.log(this.products);
       }
     })
   }

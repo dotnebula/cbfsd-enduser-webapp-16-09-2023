@@ -19,29 +19,29 @@
           <p class="card-text d-flex flex-column">
             <span class="text-muted text-sm">Street</span>
             <span class="font-weight-bold">
-              16, 1st Floor., Agboat Wala Bldg., Abdulrehman Street No 282, Nr Islami Hotel, Abdul Rehman Street
+              {{userInfo?.fullName}},  {{userInfo?.street}}
             </span>
           </p>
           <p class="card-text d-flex flex-column">
             <span class="text-muted text-sm">City</span>
             <span class="font-weight-bold">
-              Mumbai
+              {{userInfo?.city}}
             </span>
           </p>
           <p class="card-text d-flex flex-column">
             <span class="text-muted text-sm">State</span>
             <span class="font-weight-bold">
-              Maharashtra
+              {{userInfo?.state}}
             </span>
           </p>
           <p class="card-text d-flex flex-column">
             <span class="text-muted text-sm">Postal Code</span>
             <span class="font-weight-bold">
-              400003
+              {{userInfo?.pincode}}
             </span>
           </p>
         </div>
-        <button class="btn btn-lg btn-bock btn-primary">Place Order</button>
+        <button class="btn btn-lg btn-bock btn-primary" (click)="placeOrder()">Place Order</button>
       </div>
       
     </div>
