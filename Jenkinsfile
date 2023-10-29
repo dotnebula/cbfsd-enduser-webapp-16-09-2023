@@ -37,7 +37,7 @@ pipeline {
                      else \
                     echo OK; \
                  fi;);
-                docker container run --restart always --name cbfsd-user-webapp-container -p 4000:80 -d cbfsd-user-webapp
+                docker container run --network ecom-webapp-network --restart always --name cbfsd-user-webapp-container -p 4000:80 -d cbfsd-user-webapp
             '''
             }
         }
